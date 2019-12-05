@@ -1,0 +1,89 @@
+CCS PCM C Compiler, Version 4.104, 5967               05-dic-19 12:51
+
+               Filename: D:\projects\ccs\pic-course\001.hola_mundo\main.lst
+
+               ROM used: 49 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 5 (1%) at main() level
+                         6 (2%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+.................... // Directivas: controlan la conversión del programa a código de maquina por el compilador 
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #fuses HS, NOWDT, NOPROTECT, NOCPD 
+.................... #use delay(clock=20000000) 
+0004:  MOVLW  21
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+.................... #use fast_io(b) 
+....................  
+.................... // Funciones: agrupa un conjunto de instrucciones y siempre debe haber una principal llamada main 
+.................... void main() { 
+0018:  CLRF   04
+0019:  BCF    03.7
+001A:  MOVLW  1F
+001B:  ANDWF  03,F
+001C:  BSF    03.5
+001D:  BSF    1F.0
+001E:  BSF    1F.1
+001F:  BSF    1F.2
+0020:  BCF    1F.3
+0021:  MOVLW  07
+0022:  MOVWF  1C
+....................    // Instrucciones: indican cómo debe comportarse el pic 
+....................    port_b_pullups(true); 
+0023:  BCF    01.7
+....................    set_tris_b(0); 
+0024:  MOVLW  00
+0025:  MOVWF  06
+....................    // Comentarios: (opcionales) utilizados para describir 
+....................    // bucle infinito 
+....................    while (true) { 
+....................       output_high(pin_b7); 
+0026:  BCF    03.5
+0027:  BSF    06.7
+....................       delay_ms(100); 
+0028:  MOVLW  64
+0029:  MOVWF  21
+002A:  CALL   004
+....................       output_low(pin_b7); 
+002B:  BCF    06.7
+....................       delay_ms(100); 
+002C:  MOVLW  64
+002D:  MOVWF  21
+002E:  CALL   004
+....................    } 
+002F:  GOTO   027
+.................... } 
+....................  
+....................  
+0030:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT
