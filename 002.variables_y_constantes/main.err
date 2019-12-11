@@ -1,0 +1,16 @@
+>>> Warning 202 "main.c" Line 22(15,22): Variable never used:   bandera
+>>> Warning 202 "main.c" Line 24(19,30): Variable never used:   esperaLarga
+>>> Warning 202 "main.c" Line 25(26,44): Variable never used:   distanciaRecorrida
+>>> Warning 202 "main.c" Line 26(7,24): Variable never used:   temperaturaActual
+>>> Warning 202 "main.c" Line 27(16,25): Variable never used:   ingresado
+>>> Warning 202 "main.c" Line 28(25,36): Variable never used:   intConSigno
+>>> Warning 202 "main.c" Line 29(28,41): Variable never used:   int16ConSigno
+>>> Warning 202 "main.c" Line 30(28,41): Variable never used:   int32ConSigno
+>>> Warning 202 "main.c" Line 32(23,34): Variable never used:   valorMinimo
+>>> Warning 202 "main.c" Line 33(16,18): Variable never used:   pi
+>>> Warning 202 "main.c" Line 34(22,31): Variable never used:   validador
+>>> Warning 202 "main.c" Line 38(13,21): Variable never used:   var_auto
+>>> Warning 202 "main.c" Line 39(15,25): Variable never used:   var_static
+>>> Warning 202 "main.c" Line 42(8,17): Variable never used:   var_local
+      Memory usage:   ROM=1%      RAM=8% - 8%
+      0 Errors,  14 Warnings.

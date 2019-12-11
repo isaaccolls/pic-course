@@ -1,0 +1,154 @@
+CCS PCM C Compiler, Version 4.104, 5967               11-dic-19 12:44
+
+               Filename: D:\projects\ccs\pic-course\002.variables_y_constantes\main.lst
+
+               ROM used: 79 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 30 (8%) at main() level
+                         31 (8%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+.................... // [TIPO_DE_DATO] [NOMBRE_VARIABLE] = [VALOR_INICIAL] 
+.................... /* 
+.................... | Tipo         | Tamaño | Rango                         | Descripción             | 
+.................... |--------------|--------|-------------------------------|-------------------------| 
+.................... | int1 ó short | 1 bit  | 0 a 1                         | Entero de 1 bit         | 
+.................... | int ó int8   | 8 bit  | 0 a 255                       | Entero                  | 
+.................... | int16 ó long | 16 bit | 0 a 65.535                    | Entero de 16 bit        | 
+.................... | int32        | 32 bit | 0 a 4.294.967.295             | Entero de 32 bit        | 
+.................... | float        | 32 bit | ±1.175x10^-38 a ±3.402x10^+38 | Coma flotante           | 
+.................... | char         | 8 bit  | 0 a 255                       | Carácter                | 
+.................... | void         | -      | -                             | Sin valor               | 
+.................... | signed int8  | 8 bit  | -128 a +127                   | Entero con signo        | 
+.................... | signed int16 | 16 bit | -32768 a + 32767              | Entero largo con signo  | 
+.................... | signed int32 | 32 bit | -2^31 a +(2^31-1)             | Entero 32 bit con signo | 
+.................... */ 
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #include <test.c> 
+.................... int var_extern = 21; 
+....................  
+.................... #fuses HS, NOWDT, NOPROTECT, NOCPD 
+.................... #use delay(clock=20000000) 
+0004:  MOVLW  39
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+.................... #use fast_io(b) 
+....................  
+.................... short bandera = 0; 
+.................... int espera = 250; 
+.................... int16 esperaLarga = 60000; 
+.................... int32 distanciaRecorrida = 0; 
+.................... float temperaturaActual; 
+.................... char ingresado = ' '; 
+.................... signed int8 intConSigno = -21; 
+.................... signed int16 int16ConSigno = -420; 
+.................... signed int32 int32ConSigno = 420; 
+....................  
+.................... const int valorMinimo = 16; 
+.................... const float pi = 3.14; 
+.................... const char validador = '#'; 
+....................  
+.................... void main() { 
+0018:  CLRF   04
+0019:  BCF    03.7
+001A:  MOVLW  1F
+001B:  ANDWF  03,F
+001C:  MOVLW  15
+001D:  MOVWF  20
+001E:  BCF    21.0
+001F:  MOVLW  FA
+0020:  MOVWF  22
+0021:  MOVLW  EA
+0022:  MOVWF  24
+0023:  MOVLW  60
+0024:  MOVWF  23
+0025:  CLRF   28
+0026:  CLRF   27
+0027:  CLRF   26
+0028:  CLRF   25
+0029:  MOVLW  20
+002A:  MOVWF  2D
+002B:  MOVLW  EB
+002C:  MOVWF  2E
+002D:  MOVLW  FE
+002E:  MOVWF  30
+002F:  MOVLW  5C
+0030:  MOVWF  2F
+0031:  CLRF   34
+0032:  CLRF   33
+0033:  MOVLW  01
+0034:  MOVWF  32
+0035:  MOVLW  A4
+0036:  MOVWF  31
+0037:  BSF    03.5
+0038:  BSF    1F.0
+0039:  BSF    1F.1
+003A:  BSF    1F.2
+003B:  BCF    1F.3
+003C:  MOVLW  07
+003D:  MOVWF  1C
+....................    // clases de almacenamiento 
+....................    auto int var_auto; 
+....................    static int var_static; 
+003E:  BCF    03.5
+003F:  CLRF   35
+....................    extern int var_extern; 
+....................     
+....................    int var_local; 
+....................    port_b_pullups(true); 
+0040:  BSF    03.5
+0041:  BCF    01.7
+....................    set_tris_b(0); 
+0042:  MOVLW  00
+0043:  MOVWF  06
+....................    // bucle infinito 
+....................    while (true) { 
+....................       output_high(pin_b7); 
+0044:  BCF    03.5
+0045:  BSF    06.7
+....................       delay_ms(espera); 
+0046:  MOVF   22,W
+0047:  MOVWF  39
+0048:  CALL   004
+....................       output_low(pin_b7); 
+0049:  BCF    06.7
+....................       delay_ms(espera); 
+004A:  MOVF   22,W
+004B:  MOVWF  39
+004C:  CALL   004
+....................    } 
+004D:  GOTO   045
+.................... } 
+....................  
+....................  
+....................  
+004E:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT
