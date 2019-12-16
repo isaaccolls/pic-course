@@ -1,0 +1,233 @@
+CCS PCM C Compiler, Version 4.104, 5967               16-dic-19 15:44
+
+               Filename: D:\projects\ccs\pic-course\003.operadores\main.lst
+
+               ROM used: 131 words (2%)
+                         Largest free fragment is 2048
+               RAM used: 13 (4%) at main() level
+                         17 (5%) worst case
+               Stack:    1 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   03F
+0003:  NOP
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #fuses HS, NOWDT, NOPROTECT, NOCPD 
+.................... #use delay(clock=20000000) 
+002B:  MOVLW  2B
+002C:  MOVWF  04
+002D:  BCF    03.7
+002E:  MOVF   00,W
+002F:  BTFSC  03.2
+0030:  GOTO   03E
+0031:  MOVLW  06
+0032:  MOVWF  78
+0033:  CLRF   77
+0034:  DECFSZ 77,F
+0035:  GOTO   034
+0036:  DECFSZ 78,F
+0037:  GOTO   033
+0038:  MOVLW  7B
+0039:  MOVWF  77
+003A:  DECFSZ 77,F
+003B:  GOTO   03A
+003C:  DECFSZ 00,F
+003D:  GOTO   031
+003E:  RETURN
+.................... #use fast_io(b) 
+....................  
+.................... void main() { 
+003F:  CLRF   04
+0040:  BCF    03.7
+0041:  MOVLW  1F
+0042:  ANDWF  03,F
+0043:  BSF    03.5
+0044:  BSF    1F.0
+0045:  BSF    1F.1
+0046:  BSF    1F.2
+0047:  BCF    1F.3
+0048:  MOVLW  07
+0049:  MOVWF  1C
+004A:  MOVLW  05
+004B:  BCF    03.5
+004C:  MOVWF  21
+004D:  MOVLW  03
+004E:  ADDWF  21,W
+004F:  MOVWF  23
+0050:  MOVF   21,W
+0051:  MOVWF  2B
+0052:  MOVF   22,W
+0053:  MOVWF  2C
+0054:  GOTO   004
+0055:  MOVF   78,W
+0056:  MOVWF  24
+0057:  MOVF   21,W
+0058:  ANDLW  01
+0059:  MOVWF  25
+005A:  MOVF   22,W
+005B:  INCF   22,F
+005C:  MOVWF  26
+005D:  MOVF   21,W
+005E:  SUBWF  22,W
+005F:  BTFSS  03.0
+0060:  GOTO   063
+0061:  MOVLW  00
+0062:  GOTO   064
+0063:  MOVLW  01
+0064:  MOVWF  27
+0065:  MOVF   22,W
+0066:  SUBWF  21,W
+0067:  BTFSC  03.2
+0068:  GOTO   06B
+0069:  MOVLW  00
+006A:  GOTO   06C
+006B:  MOVLW  01
+006C:  MOVWF  28
+.................... /* 
+.................... Aritmeticos 
+.................... | Operador | Descripción                                | 
+.................... |----------|--------------------------------------------| 
+.................... | +        | Suma                                       | 
+.................... | -        | Resta                                      | 
+.................... | *        | Multiplicación                             | 
+.................... | /        | División                                   | 
+.................... | %        | Módulo (Resto de una división entera)      | 
+.................... | ++       | Incrementa en uno el valor del operando    | 
+.................... | --       | Decrementa en uno el valor del operando    | 
+.................... | sizeof   | Determina el tamaño, en bytes, un operando | 
+.................... */ 
+....................    int a = 5; 
+....................    int b = 3; 
+....................    int suma = a + b; 
+....................    int mult = a * b; 
+....................    int mod = a % 2; 
+....................    int c = b++; 
+.................... /* 
+.................... Relacionales 
+.................... | Operador | Descripción           | 
+.................... |----------|-----------------------| 
+.................... | <        | Menor que             | 
+.................... | >        | Mayor que             | 
+.................... | <=       | Menor o igual que     | 
+.................... | >=       | Mayor o igual que     | 
+.................... | ==       | Igual a               | 
+.................... | ¡=       | Distinto de           | 
+.................... | ?:       | Expresion condicional | 
+.................... */ 
+....................    int mayor = a > b; 
+....................    int igual = a == b; 
+.................... /* 
+.................... Asignación 
+.................... | Operador | Descripción                                                                | 
+.................... |----------|----------------------------------------------------------------------------| 
+.................... | +=       | Asignación de suma (x+=y es lo mismo que x=x+y)                            | 
+.................... | -=       | Asignación de resta (x-=y es lo mismo que x=x-y)                           | 
+.................... | *=       | Asignación de multiplicación (x*=y es lo mismo que x=x*y)                  | 
+.................... | /=       | Asignación de división (x/=y es lo mismo que x=x/y)                        | 
+.................... | %=       | Asignación de resto de división (x%=y es lo mismo que x=x%y)               | 
+.................... | <<=      | Asignación de desplazamiento a la izquierda (x<<=y es lo mismo que x=x<<y) | 
+.................... | >>=      | Asignación de desplazamiento a la derecha (x>>=y es lo mismo que x=x>>y)   | 
+.................... | &=       | Asignación de AND de bits (x&=y es lo mismo que x=x&y)                     | 
+.................... | |=       | Asignación de OR de bits  (x|=y es lo mismo que x=x|y)                     | 
+.................... | ^=       | Asignación de OR exclusivo de bits (XOR) (x^=y es lo mismo que x=x^y)      | 
+.................... */ 
+....................    a+=b; 
+006D:  MOVF   22,W
+006E:  ADDWF  21,F
+....................    a = a + b; 
+006F:  MOVF   22,W
+0070:  ADDWF  21,F
+.................... /* 
+.................... Lógicos 
+.................... | Operador | Descripción | 
+.................... |----------|-------------| 
+.................... | !        | NOT         | 
+.................... | &&       | AND         | 
+.................... | ||       | OR          | 
+.................... a && b 
+.................... */ 
+.................... /* 
+.................... Bits 
+.................... | Operador | Descripción                        | 
+.................... |----------|------------------------------------| 
+.................... | ~        | Negación de bits (complemento a 1) | 
+.................... | &        | AND                                | 
+.................... | |        | OR                                 | 
+.................... | ^        | XOR                                | 
+.................... | >>       | Desplazamiento a la derecha        | 
+.................... | <<       | Desplazamiento a la izquierda      | 
+.................... */ 
+.................... /* 
+.................... Punteros 
+.................... | Operador | Descripción          | 
+.................... |----------|----------------------| 
+.................... | &        | Dirección            | 
+.................... | *        | Inderección          | 
+.................... | ->       | Puntero a estructura | 
+.................... */ 
+....................    int *x; 
+....................    x = &b; 
+0071:  CLRF   2A
+0072:  MOVLW  22
+0073:  MOVWF  29
+....................    port_b_pullups(true); 
+0074:  BSF    03.5
+0075:  BCF    01.7
+....................    set_tris_b(0); 
+0076:  MOVLW  00
+0077:  MOVWF  06
+....................    // bucle infinito 
+....................    while (true) { 
+....................       output_high(pin_b7); 
+0078:  BCF    03.5
+0079:  BSF    06.7
+....................       delay_ms(100); 
+007A:  MOVLW  64
+007B:  MOVWF  2B
+007C:  CALL   02B
+....................       output_low(pin_b7); 
+007D:  BCF    06.7
+....................       delay_ms(100); 
+007E:  MOVLW  64
+007F:  MOVWF  2B
+0080:  CALL   02B
+....................    } 
+0081:  GOTO   079
+.................... } 
+....................  
+.................... /* 
+.................... Precedencia de los operadores 
+.................... | Expresiones                                     | en           | orden       | descendente  | de     | precedencia | 
+.................... |-------------------------------------------------|--------------|-------------|--------------|--------|-------------| 
+.................... | (expr)                                          |              |             |              |        |             | 
+.................... | !expr                                           | ~expr        | ++expr      | expr++       | --expr | expr --     | 
+.................... | (type)expr                                      | *expr        | &value      | sizeof(type) |        |             | 
+.................... | expr*expr                                       | expr/expr    | expr%expr   |              |        |             | 
+.................... | expr+expr                                       | expr-expr    |             |              |        |             | 
+.................... | expr<<expr                                      | expr>>expr   |             |              |        |             | 
+.................... | expr<expr                                       | expr<=expr   | expr>expr   | expr>=expr   |        |             | 
+.................... | expr == expr                                    | expr!=expr   |             |              |        |             | 
+.................... | expr&expr                                       |              |             |              |        |             | 
+.................... | expr^expr                                       |              |             |              |        |             | 
+.................... | expr | expr                                     |              |             |              |        |             | 
+.................... | expr&& expr                                     |              |             |              |        |             | 
+.................... | expr || expr                                    |              |             |              |        |             | 
+.................... | expr ? expr: expr                               |              |             |              |        |             | 
+.................... | value = expr                                    | value+=expr  | value-=expr |              |        |             | 
+.................... | value*=expr                                     | value/=expr  | value%=expr |              |        |             | 
+.................... | value>>=expr                                    | value<<=expr | value&=expr |              |        |             | 
+.................... | value^=expr                                     | value|=expr  | expr,expr   |              |        |             | 
+.................... */ 
+....................  
+....................  
+....................  
+0082:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT

@@ -1,0 +1,8 @@
+>>> Warning 202 "main.c" Line 22(13,17): Variable never used:   suma
+>>> Warning 202 "main.c" Line 23(13,17): Variable never used:   mult
+>>> Warning 202 "main.c" Line 24(12,15): Variable never used:   mod
+>>> Warning 202 "main.c" Line 25(10,11): Variable never used:   c
+>>> Warning 202 "main.c" Line 38(14,19): Variable never used:   mayor
+>>> Warning 202 "main.c" Line 39(14,19): Variable never used:   igual
+      Memory usage:   ROM=2%      RAM=4% - 5%
+      0 Errors,  6 Warnings.
