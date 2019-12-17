@@ -1,0 +1,112 @@
+CCS PCM C Compiler, Version 4.104, 5967               17-dic-19 12:49
+
+               Filename: D:\projects\ccs\pic-course\004.funciones\main.lst
+
+               ROM used: 62 words (1%)
+                         Largest free fragment is 2048
+               RAM used: 5 (1%) at main() level
+                         9 (2%) worst case
+               Stack:    2 locations
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   025
+0003:  NOP
+.................... #include <16F877A.h> 
+.................... //////// Standard Header file for the PIC16F877A device //////////////// 
+.................... #device PIC16F877A 
+.................... #list 
+....................  
+.................... #fuses HS, NOWDT, NOPROTECT, NOCPD 
+.................... #use delay(clock=20000000) 
+0004:  MOVLW  24
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   017
+000A:  MOVLW  06
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  7B
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  DECFSZ 00,F
+0016:  GOTO   00A
+0017:  RETURN
+.................... #use fast_io(b) 
+....................  
+.................... void parpadeo () { 
+....................    output_high(pin_b7); 
+....................    delay_ms(100); 
+....................    output_low(pin_b7); 
+....................    delay_ms(100); 
+.................... } 
+....................  
+.................... char parpadeoCustom(int espera, int espera1) { 
+....................    output_high(pin_b7); 
+0018:  BSF    06.7
+....................    delay_ms(espera); 
+0019:  MOVF   22,W
+001A:  MOVWF  24
+001B:  CALL   004
+....................    output_low(pin_b7); 
+001C:  BCF    06.7
+....................    delay_ms(espera1); 
+001D:  MOVF   23,W
+001E:  MOVWF  24
+001F:  CALL   004
+....................    return 'x'; 
+0020:  MOVLW  78
+0021:  MOVWF  78
+.................... } 
+0022:  BCF    0A.3
+0023:  BCF    0A.4
+0024:  GOTO   039 (RETURN)
+....................  
+.................... void main() { 
+0025:  CLRF   04
+0026:  BCF    03.7
+0027:  MOVLW  1F
+0028:  ANDWF  03,F
+0029:  BSF    03.5
+002A:  BSF    1F.0
+002B:  BSF    1F.1
+002C:  BSF    1F.2
+002D:  BCF    1F.3
+002E:  MOVLW  07
+002F:  MOVWF  1C
+....................    port_b_pullups(true); 
+0030:  BCF    01.7
+....................    set_tris_b(0); 
+0031:  MOVLW  00
+0032:  MOVWF  06
+....................    // bucle infinito 
+....................    while (true) { 
+....................       // parpadeo(); 
+....................       char prueba = parpadeoCustom(150, 50); 
+0033:  MOVLW  96
+0034:  BCF    03.5
+0035:  MOVWF  22
+0036:  MOVLW  32
+0037:  MOVWF  23
+0038:  GOTO   018
+0039:  MOVF   78,W
+003A:  MOVWF  21
+....................    } 
+003B:  BSF    03.5
+003C:  GOTO   033
+.................... } 
+....................  
+....................  
+....................  
+003D:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT NODEBUG NOPROTECT BROWNOUT NOLVP NOCPD NOWRT
